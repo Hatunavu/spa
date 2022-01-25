@@ -10,11 +10,14 @@ import 'package:nam_training/bloc/observer/simple_bloc_observer.dart';
 import 'package:nam_training/features/core/splash_page.dart';
 import 'package:nam_training/features/home/home_page.dart';
 import 'package:nam_training/features/login/login_page.dart';
+import 'package:nam_training/firebase_options.dart';
 import 'package:nam_training/repository/user_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Bloc.observer = SimpleBlocObserver();
   runApp(MyApp());
 }
